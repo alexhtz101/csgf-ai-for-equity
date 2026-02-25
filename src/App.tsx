@@ -60,6 +60,68 @@ const workstreams = [
   },
 ]
 
+/* ============================================
+   WORKFLOW MAPPING OPTIONS
+   ============================================ */
+
+const taskComplexityOptions = [
+  { value: '', label: 'Select complexity level...' },
+  { value: 'simple', label: 'Simple: Fully routinized' },
+  { value: 'moderate', label: 'Moderate: Mainly routinized, some decision points' },
+  { value: 'complex', label: 'Complex: Significant judgment required' },
+]
+
+const taskPredictabilityOptions = [
+  { value: '', label: 'Select predictability...' },
+  { value: 'highly-predictable', label: 'Highly Predictable: Same patterns always' },
+  { value: 'mostly-predictable', label: 'Mostly Predictable: Common patterns with occasional variations' },
+  { value: 'variable', label: 'Variable: Frequent exceptions' },
+]
+
+const aiComplexityOptions = [
+  { value: '', label: 'Select AI complexity...' },
+  { value: 'simple', label: 'Simple: We have the tools and expertise now' },
+  { value: 'moderate', label: 'Moderate: Requires some learning/setup' },
+  { value: 'complex', label: 'Complex: Requires significant investment' },
+]
+
+const impactTypeOptions = [
+  { value: '', label: 'Select impact type...' },
+  { value: 'operational-efficiency', label: 'Operational Efficiency: Streamlines processes, reduces costs' },
+  { value: 'decision-quality', label: 'Decision Quality: Better insights and choices' },
+  { value: 'staff-experience', label: 'Staff Experience: Improves work satisfaction' },
+  { value: 'student-family-experience', label: 'Student/Family Experience: Better service delivery' },
+]
+
+const impactMagnitudeOptions = [
+  { value: '', label: 'Select impact magnitude...' },
+  { value: 'low', label: 'Low: Minor improvement (<10%)' },
+  { value: 'medium', label: 'Medium: Moderate improvement (10-20%)' },
+  { value: 'high', label: 'High: Significant improvement (>20%)' },
+]
+
+const riskLevelOptions = [
+  { value: '', label: 'Select risk level...' },
+  { value: 'low', label: 'Low Risk: Minor consequences for errors' },
+  { value: 'medium', label: 'Medium Risk: Moderate consequences' },
+  { value: 'high', label: 'High Risk: Significant consequences' },
+]
+
+const stakeholderAcceptanceOptions = [
+  { value: '', label: 'Select stakeholder acceptance...' },
+  { value: 'high', label: 'High: Enthusiastic support expected' },
+  { value: 'medium', label: 'Medium: Some resistance but generally supportive' },
+  { value: 'low', label: 'Low: Significant resistance expected' },
+]
+
+const implementationStatusOptions = [
+  { value: '', label: 'Select status...' },
+  { value: 'not-considering', label: 'Not Considering' },
+  { value: 'explore', label: 'Explore' },
+  { value: 'pilot', label: 'Pilot' },
+  { value: 'scale', label: 'Scale' },
+]
+
 const qualityTips = [
   {
     title: 'Adopt an enterprise platform and ensure your staff are using it.',
@@ -285,6 +347,275 @@ function AccordionSection({
 }
 
 /* ============================================
+   WORKFLOW MAPPING FORM
+   ============================================ */
+
+interface FormState {
+  workflowName: string
+  opportunityChallenge: string
+  taskComplexity: string
+  taskPredictability: string
+  aiUseIdea: string
+  aiComplexity: string
+  impactType: string
+  impactMagnitude: string
+  riskLevel: string
+  stakeholderAcceptance: string
+  implementationStatus: string
+}
+
+const initialFormState: FormState = {
+  workflowName: '',
+  opportunityChallenge: '',
+  taskComplexity: '',
+  taskPredictability: '',
+  aiUseIdea: '',
+  aiComplexity: '',
+  impactType: '',
+  impactMagnitude: '',
+  riskLevel: '',
+  stakeholderAcceptance: '',
+  implementationStatus: '',
+}
+
+function PrintIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="6 9 6 2 18 2 18 9" />
+      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+      <rect x="6" y="14" width="12" height="8" />
+    </svg>
+  )
+}
+
+function WorkflowMappingForm() {
+  const [form, setForm] = useState<FormState>(initialFormState)
+
+  const updateField = (field: keyof FormState, value: string) => {
+    setForm(prev => ({ ...prev, [field]: value }))
+  }
+
+  const handlePrint = () => {
+    window.print()
+  }
+
+  const handleReset = () => {
+    setForm(initialFormState)
+  }
+
+  return (
+    <div className="workflow-form">
+      <p className="wf-intro">
+        Use this tool to map a recurring workflow and assess whether it's a good candidate for AI. Fill out each section, then print or save as PDF.
+      </p>
+
+      {/* Starting Fields */}
+      <div className="wf-section wf-section-start">
+        <div className="wf-field">
+          <label htmlFor="workflowName">Workflow Name</label>
+          <input
+            type="text"
+            id="workflowName"
+            placeholder="e.g., Onboarding, Chromebook Distribution, MAP Testing Set-Up"
+            value={form.workflowName}
+            onChange={(e) => updateField('workflowName', e.target.value)}
+          />
+        </div>
+        <div className="wf-field">
+          <label htmlFor="opportunityChallenge">Opportunity / Challenge</label>
+          <textarea
+            id="opportunityChallenge"
+            placeholder="Where are there pain points, inefficiencies, or opportunities for improvement?"
+            rows={3}
+            value={form.opportunityChallenge}
+            onChange={(e) => updateField('opportunityChallenge', e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Step 1: Task Characteristics */}
+      <div className="wf-section">
+        <div className="wf-step-header">
+          <span className="wf-step-number">1</span>
+          <span className="wf-step-title">Task Characteristics</span>
+        </div>
+        <div className="wf-field-row">
+          <div className="wf-field">
+            <label htmlFor="taskComplexity">Task Complexity Level</label>
+            <div className="wf-select-wrapper">
+              <select
+                id="taskComplexity"
+                value={form.taskComplexity}
+                onChange={(e) => updateField('taskComplexity', e.target.value)}
+              >
+                {taskComplexityOptions.map(opt => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+              <ChevronDown className="wf-select-chevron" />
+            </div>
+          </div>
+          <div className="wf-field">
+            <label htmlFor="taskPredictability">Task Predictability</label>
+            <div className="wf-select-wrapper">
+              <select
+                id="taskPredictability"
+                value={form.taskPredictability}
+                onChange={(e) => updateField('taskPredictability', e.target.value)}
+              >
+                {taskPredictabilityOptions.map(opt => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+              <ChevronDown className="wf-select-chevron" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Step 2: AI Opportunity */}
+      <div className="wf-section">
+        <div className="wf-step-header">
+          <span className="wf-step-number">2</span>
+          <span className="wf-step-title">AI Opportunity</span>
+        </div>
+        <div className="wf-field">
+          <label htmlFor="aiUseIdea">Idea(s) for AI Use <span className="wf-optional">(optional)</span></label>
+          <textarea
+            id="aiUseIdea"
+            placeholder="Leave blank if not considering AI. Otherwise, describe how AI could help with this workflow."
+            rows={3}
+            value={form.aiUseIdea}
+            onChange={(e) => updateField('aiUseIdea', e.target.value)}
+          />
+        </div>
+        <div className="wf-field">
+          <label htmlFor="aiComplexity">Complexity of AI Use</label>
+          <div className="wf-select-wrapper">
+            <select
+              id="aiComplexity"
+              value={form.aiComplexity}
+              onChange={(e) => updateField('aiComplexity', e.target.value)}
+            >
+              {aiComplexityOptions.map(opt => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
+            <ChevronDown className="wf-select-chevron" />
+          </div>
+        </div>
+      </div>
+
+      {/* Step 3: Business Impact */}
+      <div className="wf-section">
+        <div className="wf-step-header">
+          <span className="wf-step-number">3</span>
+          <span className="wf-step-title">Business Impact Consideration</span>
+        </div>
+        <div className="wf-field-row">
+          <div className="wf-field">
+            <label htmlFor="impactType">Impact Type</label>
+            <div className="wf-select-wrapper">
+              <select
+                id="impactType"
+                value={form.impactType}
+                onChange={(e) => updateField('impactType', e.target.value)}
+              >
+                {impactTypeOptions.map(opt => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+              <ChevronDown className="wf-select-chevron" />
+            </div>
+          </div>
+          <div className="wf-field">
+            <label htmlFor="impactMagnitude">Impact Magnitude</label>
+            <div className="wf-select-wrapper">
+              <select
+                id="impactMagnitude"
+                value={form.impactMagnitude}
+                onChange={(e) => updateField('impactMagnitude', e.target.value)}
+              >
+                {impactMagnitudeOptions.map(opt => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+              <ChevronDown className="wf-select-chevron" />
+            </div>
+          </div>
+        </div>
+        <div className="wf-field-row">
+          <div className="wf-field">
+            <label htmlFor="riskLevel">Risk Level</label>
+            <div className="wf-select-wrapper">
+              <select
+                id="riskLevel"
+                value={form.riskLevel}
+                onChange={(e) => updateField('riskLevel', e.target.value)}
+              >
+                {riskLevelOptions.map(opt => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+              <ChevronDown className="wf-select-chevron" />
+            </div>
+          </div>
+          <div className="wf-field">
+            <label htmlFor="stakeholderAcceptance">Predicted Stakeholder Acceptance</label>
+            <div className="wf-select-wrapper">
+              <select
+                id="stakeholderAcceptance"
+                value={form.stakeholderAcceptance}
+                onChange={(e) => updateField('stakeholderAcceptance', e.target.value)}
+              >
+                {stakeholderAcceptanceOptions.map(opt => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+              <ChevronDown className="wf-select-chevron" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Step 4: Implementation Status */}
+      <div className="wf-section">
+        <div className="wf-step-header">
+          <span className="wf-step-number">4</span>
+          <span className="wf-step-title">AI Innovation Implementation Status</span>
+        </div>
+        <div className="wf-field">
+          <label htmlFor="implementationStatus">Current Status</label>
+          <div className="wf-select-wrapper">
+            <select
+              id="implementationStatus"
+              value={form.implementationStatus}
+              onChange={(e) => updateField('implementationStatus', e.target.value)}
+            >
+              {implementationStatusOptions.map(opt => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
+            <ChevronDown className="wf-select-chevron" />
+          </div>
+        </div>
+      </div>
+
+      {/* Actions */}
+      <div className="wf-actions">
+        <button className="wf-btn wf-btn-secondary" onClick={handleReset} type="button">
+          Clear Form
+        </button>
+        <button className="wf-btn wf-btn-primary" onClick={handlePrint} type="button">
+          <PrintIcon />
+          Print / Save PDF
+        </button>
+      </div>
+    </div>
+  )
+}
+
+/* ============================================
    APP
    ============================================ */
 
@@ -395,6 +726,11 @@ function App() {
           ) : (
             <WorkstreamSelector onSelect={handleSelect} />
           )}
+        </AccordionSection>
+
+        {/* Section 4: Workflow Mapping Tool */}
+        <AccordionSection number="4" title="Map Your Own Workflow" description="Identify recurring workflows that are good candidates for AI" isOpen={openSection === '4'} onToggle={() => toggleSection('4')}>
+          <WorkflowMappingForm />
         </AccordionSection>
 
       </main>

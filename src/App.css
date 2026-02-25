@@ -743,3 +743,333 @@
 .accordion-section:nth-child(1) { animation-delay: 0.05s; }
 .accordion-section:nth-child(2) { animation-delay: 0.12s; }
 .accordion-section:nth-child(3) { animation-delay: 0.19s; }
+.accordion-section:nth-child(4) { animation-delay: 0.26s; }
+
+/* ==========================================
+   WORKFLOW MAPPING FORM
+   ========================================== */
+
+.workflow-form {
+  max-width: 800px;
+}
+
+.wf-intro {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--gray-700);
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.wf-section {
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.wf-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 24px;
+}
+
+.wf-section-start {
+  background: var(--off-white);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--gray-200);
+  margin-bottom: 28px;
+}
+
+.wf-step-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.wf-step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.wf-step-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--navy);
+}
+
+.wf-field {
+  margin-bottom: 16px;
+}
+
+.wf-field:last-child {
+  margin-bottom: 0;
+}
+
+.wf-field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.wf-optional {
+  font-weight: 400;
+  color: var(--gray-500);
+}
+
+.wf-field input[type="text"],
+.wf-field textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--navy);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 12px 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.wf-field input[type="text"]:hover,
+.wf-field textarea:hover {
+  border-color: var(--blue-mid);
+}
+
+.wf-field input[type="text"]:focus,
+.wf-field textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(35, 171, 225, 0.15);
+}
+
+.wf-field input[type="text"]::placeholder,
+.wf-field textarea::placeholder {
+  color: var(--gray-300);
+}
+
+.wf-field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.wf-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.wf-field-row:last-child {
+  margin-bottom: 0;
+}
+
+.wf-field-row .wf-field {
+  margin-bottom: 0;
+}
+
+.wf-select-wrapper {
+  position: relative;
+}
+
+.wf-field select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--navy);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 12px 40px 12px 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.wf-field select:hover {
+  border-color: var(--blue-mid);
+}
+
+.wf-field select:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(35, 171, 225, 0.15);
+}
+
+.wf-select-chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--gray-300);
+  pointer-events: none;
+}
+
+.wf-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-100);
+}
+
+.wf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.wf-btn-secondary {
+  background: var(--white);
+  color: var(--gray-500);
+  border: 1px solid var(--gray-200);
+}
+
+.wf-btn-secondary:hover {
+  background: var(--off-white);
+  color: var(--navy);
+  border-color: var(--gray-300);
+}
+
+.wf-btn-primary {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.wf-btn-primary:hover {
+  background: var(--blue-hover);
+}
+
+.wf-btn-primary svg {
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .wf-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .wf-actions {
+    flex-direction: column;
+  }
+
+  .wf-btn {
+    justify-content: center;
+  }
+}
+
+/* ==========================================
+   PRINT STYLES
+   ========================================== */
+
+@media print {
+  /* Hide non-essential elements */
+  .site-header,
+  .hero,
+  .site-footer,
+  .wf-actions,
+  .accordion-section:not(.is-open),
+  .accordion-trigger {
+    display: none !important;
+  }
+
+  /* Reset page layout */
+  body {
+    background: white;
+    font-size: 12pt;
+  }
+
+  .main-content {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .accordion-section {
+    border: none;
+    box-shadow: none;
+    margin: 0;
+  }
+
+  .accordion-body {
+    display: block !important;
+    grid-template-rows: 1fr !important;
+  }
+
+  .accordion-content {
+    padding: 0;
+  }
+
+  /* Form print styles */
+  .workflow-form {
+    max-width: 100%;
+  }
+
+  .wf-intro {
+    display: none;
+  }
+
+  .wf-section {
+    page-break-inside: avoid;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+  }
+
+  .wf-section-start {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+  }
+
+  .wf-field input[type="text"],
+  .wf-field textarea,
+  .wf-field select {
+    border: 1px solid #ccc;
+    background: white;
+    padding: 8px 10px;
+    font-size: 11pt;
+  }
+
+  .wf-select-chevron {
+    display: none;
+  }
+
+  .wf-field-row {
+    gap: 12px;
+  }
+
+  /* Print header */
+  .workflow-form::before {
+    content: "Workflow Mapping Tool — AI for Equity";
+    display: block;
+    font-family: var(--font-display);
+    font-size: 18pt;
+    font-weight: 400;
+    color: #20303a;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #23abe1;
+  }
+}
