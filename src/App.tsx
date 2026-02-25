@@ -136,7 +136,7 @@ function ArrowLeftIcon() {
 function Logo() {
   return (
     <a href="https://equity-ai.org" className="logo-link" target="_blank" rel="noopener noreferrer">
-      AI for Equity
+      <img src="/logo.jpg" alt="AI for Equity" className="logo-img" />
     </a>
   )
 }

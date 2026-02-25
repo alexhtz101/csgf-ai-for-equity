@@ -23,17 +23,20 @@
 }
 
 .logo-link {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--navy);
-  text-decoration: none;
-  letter-spacing: 0.01em;
-  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  opacity: 1;
+  transition: opacity 0.2s;
 }
 
 .logo-link:hover {
-  color: var(--blue);
+  opacity: 0.85;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
 }
 
 /* ==========================================
@@ -659,8 +662,8 @@
     padding: 0 16px;
   }
 
-  .logo-link {
-    font-size: 17px;
+  .logo-img {
+    height: 30px;
   }
 
   .hero-inner {
