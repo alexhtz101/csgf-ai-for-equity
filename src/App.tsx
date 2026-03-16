@@ -666,6 +666,9 @@ function App() {
       <header className="site-header">
         <div className="header-inner">
           <Logo />
+          <p className="header-tagline">
+            We built this site with Claude Code. <a href="https://learn-coding-with-ai.vercel.app/courses.html" target="_blank" rel="noopener noreferrer">Learn Claude Code here →</a>
+          </p>
         </div>
       </header>
 
@@ -706,6 +709,9 @@ function App() {
           <div className="prose">
             <p className="intro-text">
               As you build your team&rsquo;s capacity to leverage AI, keep an equal eye on quality. AI brings real opportunities for productivity and creativity, but it also introduces risks around work quality that require active management. Below is a consolidated set of recommendations drawn from our conversations with COOs and CFOs.
+            </p>
+            <p className="explore-link">
+              <a href="https://quality-control-framework.vercel.app/" target="_blank" rel="noopener noreferrer">Explore full guidance here →</a>
             </p>
             <ol className="tip-list">
               {qualityTips.map((tip, i) => (

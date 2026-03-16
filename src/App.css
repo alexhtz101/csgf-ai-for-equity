@@ -335,6 +335,22 @@
   border-bottom: 1px solid var(--gray-100);
 }
 
+.explore-link {
+  margin-bottom: 28px;
+}
+
+.explore-link a {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.explore-link a:hover {
+  text-decoration: underline;
+}
+
 /* ==========================================
    WORKSTREAM SELECTOR (Section 3 — dropdown)
    ========================================== */
@@ -647,6 +663,30 @@
 .footer-text a {
   color: var(--blue);
   text-decoration: none;
+}
+
+/* Header Tagline */
+.header-tagline {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--gray-700);
+  margin: 0 0 0 auto;
+}
+
+.header-tagline a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.header-tagline a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .header-tagline {
+    display: none;
+  }
 }
 
 /* ==========================================
