@@ -11,7 +11,7 @@ const workstreams = [
     slug: 'analyze-data',
     videos: [
       { title: 'Deploy Claude in Excel to generate spreadsheet insights', src: 'https://www.loom.com/embed/28838121b873408181b62613e9745de0' },
-      { title: 'Leverage AI for spreadsheet formulas (A side by side comparison of different models)', src: 'https://www.loom.com/embed/ae297f241e97423fb21c8f47581ea721' },
+      { title: 'Deploy ChatGPT in Excel to collaborate and generate insights', src: 'https://www.loom.com/embed/e378e423aae8444bab8afea8bc94b7e0' },
       { title: 'Use AI to triangulate data across a number of spreadsheet tabs (A side by side comparison of different models)', src: 'https://www.loom.com/embed/57e5467c5c8c48c8a86694ba2a303cf3' },
     ],
   },
