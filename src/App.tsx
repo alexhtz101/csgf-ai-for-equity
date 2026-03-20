@@ -159,7 +159,7 @@ const qualityTips = [
 
 function buildLoomSrc(baseSrc: string): string {
   const sep = baseSrc.includes('?') ? '&' : '?'
-  return `${baseSrc}${sep}hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true`
+  return `${baseSrc}${sep}hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true&autoplay=1`
 }
 
 /* ============================================
