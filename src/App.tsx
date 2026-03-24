@@ -44,8 +44,7 @@ const workstreams = [
     name: 'Generate High Quality Decks',
     slug: 'generate-decks',
     videos: [
-      { title: 'Create on-brand decks with Gemini and Google slides', src: 'https://www.loom.com/embed/da23683b181b4dfd8b0c5dfa6194bbb0' },
-      { title: 'Use AI to create polished decks (A side by side comparison of models — note that Gemini has made updates since this was recorded, see the Gemini video)', src: 'https://www.loom.com/embed/df2f8ac3897143f09c7376e5ed9799c0' },
+      { title: 'Generate Decks with Gemini, Claude, and ChatGPT: A Comparison', src: 'https://www.loom.com/embed/f32a15b1b1b248eb923795ee928458ae' },
     ],
   },
   {
