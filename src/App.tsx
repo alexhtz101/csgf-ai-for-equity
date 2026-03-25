@@ -19,7 +19,7 @@ const workstreams = [
     name: 'Automate Recurring Workflows',
     slug: 'automate-workflows',
     videos: [
-      { title: 'Leverage ChatGPT Codex to routinize recurring tasks', src: 'https://www.loom.com/embed/d3bb21a7539e4837a267c0150e1fe6d1' },
+      { title: 'Leverage ChatGPT Skills to routinize recurring tasks', src: 'https://www.loom.com/embed/5a80e98a69084fd4a047bea4f0d56316' },
       { title: 'Leverage Claude Skills to routinize recurring tasks', src: 'https://www.loom.com/embed/c7254706d8bd4d5689edd1f5633949d0' },
     ],
   },
