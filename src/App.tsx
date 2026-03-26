@@ -738,6 +738,19 @@ function App() {
           <WorkflowMappingForm />
         </AccordionSection>
 
+        {/* AI Innovation Index CTA */}
+        <section className="innovation-cta">
+          <div className="innovation-cta-inner">
+            <h2>AI Innovation Index</h2>
+            <p>
+              Gain an AI Innovation roadmap and context on how your system is performing across leadership, staff, and student metrics.
+            </p>
+            <a href="https://innovate-ai.org" target="_blank" rel="noopener noreferrer" className="innovation-cta-btn">
+              Sign Up →
+            </a>
+          </div>
+        </section>
+
       </main>
 
       {/* Footer */}
