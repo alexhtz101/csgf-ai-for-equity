@@ -207,7 +207,10 @@ function Logo() {
    ============================================ */
 
 function VideoCard({ video, index }: { video: { title: string; src: string }; index: number }) {
-  const [isPlaying, setIsPlaying] = useState(false)
+  // Convert embed URL to share URL for direct viewing
+  const getWatchUrl = (embedUrl: string) => {
+    return embedUrl.replace('/embed/', '/share/')
+  }
 
   return (
     <div className="vcard">
@@ -216,24 +219,19 @@ function VideoCard({ video, index }: { video: { title: string; src: string }; in
         <h3 className="vcard-title">{video.title}</h3>
       </div>
       <div className="vcard-media">
-        {isPlaying && video.src ? (
-          <div className="vcard-embed">
-            <iframe
-              src={buildLoomSrc(video.src)}
-              title={video.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+        <a
+          href={getWatchUrl(video.src)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="vcard-overlay"
+          aria-label={`Play: ${video.title}`}
+        >
+          <div className="vcard-overlay-bg" />
+          <div className="vcard-play-btn">
+            <PlayIcon />
           </div>
-        ) : (
-          <button className="vcard-overlay" onClick={() => setIsPlaying(true)} aria-label={`Play: ${video.title}`}>
-            <div className="vcard-overlay-bg" />
-            <div className="vcard-play-btn">
-              <PlayIcon />
-            </div>
-            <span className="vcard-play-label">Watch video</span>
-          </button>
-        )}
+          <span className="vcard-play-label">Watch video</span>
+        </a>
       </div>
     </div>
   )
